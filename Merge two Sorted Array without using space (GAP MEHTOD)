@@ -1,0 +1,45 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+       
+        int g =(int)Math.ceil((m+n)/2);
+        while(g>0)
+        {
+            int f=0;
+            int l = g;
+            while(l<(m+n))
+            {
+                if(l<m)
+                {
+                    if(nums1[l]<nums1[f])
+                    {
+                        swap(nums1[l],nums1[f]);
+                    }
+                }
+                else if(f>=m)
+                {
+                     if(nums2[l-m]<nums2[f-m])
+                    {
+                        swap(nums2[l-m],nums2[f-m]);
+                    }
+                }
+                else
+                {
+                      if(nums2[l-m]<nums1[f])
+                    {
+                        swap(nums2[l-m],nums1[f]);
+                    }
+                }
+                f++;
+                l++;
+                    
+            }
+            g =(int)Math.ceil(g/2);
+        }
+    }
+    public void swap(int a,int b)
+    {
+        int c = a;
+          a =b;
+        b = c;
+    }
+}
